@@ -29,10 +29,19 @@ birthday_fql = "SELECT post_id, actor_id, target_id, created_time, message, comm
 graph = facebook.GraphAPI(access_token)
 
 # Grab our birthday posts using our FQL query
-birthday_posts = graph.get_object('fql', q=birthday_fql)
+query_result = graph.get_object('fql', q=birthday_fql)
+
+# Grab the data from the response
+birthday_posts = query_result['data']
+
+# Report how many posts we found...
+print 'Query returned', len(birthday_posts), 'results'
+
+# Create a counter, because why not?
+posts_responded_to = 0;
 
 # Let's loop through all of our returned posts
-for post in birthday_posts['data']:
+for post in birthday_posts:
 	# Grab the post's ID
 	post_id = post['post_id']
 
@@ -45,6 +54,9 @@ for post in birthday_posts['data']:
 	# Post the comment on the post
 	graph.put_object(post_id, 'comments', message=rand_message)
 
+	# Increment our counter..
+	posts_responded_to += 1
+
 	# Print to keep track
 	print 'The like/comment should have posted for post', post_id
 
@@ -52,3 +64,9 @@ for post in birthday_posts['data']:
 	sleep(0.1) # Sleep for a tenth of a second
 
 # Let's get this "likes" steez going
+
+# Report how many we've operated on..
+print 'Responded to', posts_responded_to, 'posts'
+
+# Fin
+print 'Done.'
