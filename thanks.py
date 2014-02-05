@@ -28,7 +28,7 @@ birthday_fql = ("SELECT post_id, actor_id, target_id, created_time, message, com
                 "WHERE source_id = me() "
                     "AND filter_key = 'others' "
                     "AND created_time > 1391346000 "
-                    "AND actor_id != 600269293 "
+                    "AND actor_id != me() "
                     "AND comments.count = 0 "
                     "AND comments.can_post = 1 "
                     "AND (strpos(message, 'birthday') >= 0 "
