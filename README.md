@@ -9,3 +9,7 @@ So last year, on my birthday, I was thinking of a way that would allow me to som
 - Get a Facebook Access Token with "read_stream" and "publish_stream" permissions
 - Define an environment variable named "FB_ACCESS_TOKEN" with the value of the token you just aquired
 - Run it! `python thanks.py`
+
+## Sample Output
+
+![Sample application output](http://i.imgur.com/4aO9ufl.png "Sample application output")
