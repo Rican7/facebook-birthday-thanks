@@ -36,6 +36,7 @@ birthday_posts = query_result['data']
 
 # Report how many posts we found...
 print 'Query returned', len(birthday_posts), 'results'
+print
 
 # Create a counter, because why not?
 posts_responded_to = 0;
@@ -66,6 +67,7 @@ for post in birthday_posts:
 # Let's get this "likes" steez going
 
 # Report how many we've operated on..
+print
 print 'Responded to', posts_responded_to, 'posts'
 
 # Fin
