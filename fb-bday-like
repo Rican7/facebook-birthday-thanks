@@ -23,7 +23,19 @@ thankyou_messages = [
 ]
 
 # Define our ridiculous "birthday" query
-birthday_fql = "SELECT post_id, actor_id, target_id, created_time, message, comments FROM stream WHERE source_id = me() AND filter_key = 'others' AND created_time > 1391346000 AND actor_id != 600269293 AND comments.count = 0 AND comments.can_post = 1 AND ( strpos(message, 'birthday') >= 0 OR strpos(message, 'Birthday') >= 0 OR strpos(message, 'happy') >= 0 OR strpos(message, 'Happy') >= 0 ) LIMIT 500"
+birthday_fql = ("SELECT post_id, actor_id, target_id, created_time, message, comments "
+                "FROM stream "
+                "WHERE source_id = me() "
+                    "AND filter_key = 'others' "
+                    "AND created_time > 1391346000 "
+                    "AND actor_id != 600269293 "
+                    "AND comments.count = 0 "
+                    "AND comments.can_post = 1 "
+                    "AND (strpos(message, 'birthday') >= 0 "
+                        "OR strpos(message, 'Birthday') >= 0 "
+                        "OR strpos(message, 'happy') >= 0 "
+                        "OR strpos(message, 'Happy') >= 0) "
+                "LIMIT 500")
 
 # Create a new GraphAPI instance with our access token
 graph = facebook.GraphAPI(access_token)
