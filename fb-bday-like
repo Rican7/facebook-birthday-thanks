@@ -3,11 +3,16 @@
 # Import our facebook python SDK
 import facebook
 import json # Grab our JSON lib too
+import os
 import random
 from time import sleep
 
 # Define our Facebook Access Token
-access_token = '***REMOVED***'
+access_token = os.getenv('FB_ACCESS_TOKEN')
+
+if not access_token:
+	exit("""ERROR!: You must set an access token.
+	Try setting the FB_ACCESS_TOKEN environment variable""")
 
 # Define our "thank you" message
 thankyou_messages = [
