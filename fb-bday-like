@@ -11,15 +11,15 @@ from time import sleep
 access_token = os.getenv('FB_ACCESS_TOKEN')
 
 if not access_token:
-	exit("""ERROR!: You must set an access token.
-	Try setting the FB_ACCESS_TOKEN environment variable""")
+    exit("""ERROR!: You must set an access token.
+    Try setting the FB_ACCESS_TOKEN environment variable""")
 
 # Define our "thank you" message
 thankyou_messages = [
-	'Thank you!! :D',
-	'Thanks so much!',
-	'Thanks!',
-	'Thank you! I appreciate it!'
+    'Thank you!! :D',
+    'Thanks so much!',
+    'Thanks!',
+    'Thank you! I appreciate it!'
 ]
 
 # Define our ridiculous "birthday" query
@@ -43,26 +43,26 @@ posts_responded_to = 0;
 
 # Let's loop through all of our returned posts
 for post in birthday_posts:
-	# Grab the post's ID
-	post_id = post['post_id']
+    # Grab the post's ID
+    post_id = post['post_id']
 
-	# "Like" the post
-	graph.put_object(post_id, 'likes')
+    # "Like" the post
+    graph.put_object(post_id, 'likes')
 
-	# Get a random message from the list
-	rand_message = random.choice(thankyou_messages)
+    # Get a random message from the list
+    rand_message = random.choice(thankyou_messages)
 
-	# Post the comment on the post
-	graph.put_object(post_id, 'comments', message=rand_message)
+    # Post the comment on the post
+    graph.put_object(post_id, 'comments', message=rand_message)
 
-	# Increment our counter..
-	posts_responded_to += 1
+    # Increment our counter..
+    posts_responded_to += 1
 
-	# Print to keep track
-	print 'The like/comment should have posted for post', post_id
+    # Print to keep track
+    print 'The like/comment should have posted for post', post_id
 
-	# Sleep for a bit to try and keep from getting rate limited
-	sleep(0.1) # Sleep for a tenth of a second
+    # Sleep for a bit to try and keep from getting rate limited
+    sleep(0.1) # Sleep for a tenth of a second
 
 # Let's get this "likes" steez going
 
