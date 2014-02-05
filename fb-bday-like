@@ -12,7 +12,7 @@ access_token = os.getenv('FB_ACCESS_TOKEN')
 
 if not access_token:
     exit("""ERROR!: You must set an access token.
-    Try setting the FB_ACCESS_TOKEN environment variable""")
+        Try setting the FB_ACCESS_TOKEN environment variable""")
 
 # Define our "thank you" message
 thankyou_messages = [
